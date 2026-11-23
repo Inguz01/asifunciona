@@ -4,6 +4,7 @@
 <body><h1>Así Funciona Publicador</h1><div id="r"></div>
 <script>
 const p=new URLSearchParams(location.search),r=document.getElementById('r');
+if((p.get('state')||'').startsWith('local-')){location.replace('http://localhost:8765/callback'+location.search);}
 if(p.get('code')){r.innerHTML='<p>✅ Autorización recibida. Copia este código de un solo uso y pégalo en el hilo del proyecto (vence en pocos minutos):</p><code id="c"></code><button id="b">Copiar</button>';
 document.getElementById('c').textContent=p.get('code');
 document.getElementById('b').onclick=()=>{navigator.clipboard.writeText(p.get('code'));document.getElementById('b').textContent='Copiado';};}
